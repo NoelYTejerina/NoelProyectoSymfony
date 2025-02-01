@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Playlist;
 use App\Entity\Cancion;
+use App\Entity\Playlist;
 use App\Entity\PlaylistCancion;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -57,7 +57,7 @@ final class PlaylistCancionController extends AbstractController
             $e->flush();
             
             return $this->json([
-                'message' => 'Canción añadida a la playlist correctamente',
+                'message' => 'Relacion añadida correctamente',
                 'path' => 'src/Controller/PlaylistCancionController'
             ]);
         } else {
