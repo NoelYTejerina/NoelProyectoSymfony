@@ -21,18 +21,21 @@ class Perfil
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descripcion = null;
 
-    /**
-     * @var Collection<int, Estilo>
-     */
-    #[ORM\OneToMany(targetEntity: Estilo::class, mappedBy: 'perfil')]
-    private Collection $estiloMusicalPreferido;
 
-    #[ORM\OneToOne(mappedBy: 'perfil', cascade: ['persist', 'remove'])]
-    private ?Usuario $usuario = null;
+
+    #[ORM\OneToOne(targetEntity: Usuario::class, inversedBy: 'perfil')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    private Usuario $usuario;
+
+    /**
+     * @var Collection<int, PerfilEstilo>
+     */
+    #[ORM\OneToMany(targetEntity: PerfilEstilo::class, mappedBy: 'perfil')]
+    private Collection $estilosPreferidos;
 
     public function __construct()
     {
-        $this->estiloMusicalPreferido = new ArrayCollection();
+            $this->estilosPreferidos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,36 +73,7 @@ class Perfil
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Estilo>
-     */
-    public function getEstiloMusicalPreferido(): Collection
-    {
-        return $this->estiloMusicalPreferido;
-    }
-
-    public function addEstiloMusicalPreferido(Estilo $estiloMusicalPreferido): static
-    {
-        if (!$this->estiloMusicalPreferido->contains($estiloMusicalPreferido)) {
-            $this->estiloMusicalPreferido->add($estiloMusicalPreferido);
-            $estiloMusicalPreferido->setPerfil($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEstiloMusicalPreferido(Estilo $estiloMusicalPreferido): static
-    {
-        if ($this->estiloMusicalPreferido->removeElement($estiloMusicalPreferido)) {
-            // set the owning side to null (unless already changed)
-            if ($estiloMusicalPreferido->getPerfil() === $this) {
-                $estiloMusicalPreferido->setPerfil(null);
-            }
-        }
-
-        return $this;
-    }
+   
 
     public function getUsuario(): ?Usuario
     {
@@ -119,6 +93,36 @@ class Perfil
         }
 
         $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PerfilEstilo>
+     */
+    public function getEstilosPreferidos(): Collection
+    {
+        return $this->estilosPreferidos;
+    }
+
+    public function addEstilosPreferido(PerfilEstilo $estilosPreferido): static
+    {
+        if (!$this->estilosPreferidos->contains($estilosPreferido)) {
+            $this->estilosPreferidos->add($estilosPreferido);
+            $estilosPreferido->setPerfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEstilosPreferidos(PerfilEstilo $estilosPreferidos): static
+    {
+        if ($this->estilosPreferidos->removeElement($estilosPreferidos)) {
+            
+            if ($estilosPreferidos->getPerfil() === $this) {
+                $estilosPreferidos->setPerfil(null);
+            }
+        }
 
         return $this;
     }

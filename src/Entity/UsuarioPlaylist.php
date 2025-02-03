@@ -16,11 +16,13 @@ class UsuarioPlaylist
     #[ORM\Column]
     private ?int $reproducida = null;
 
-    #[ORM\ManyToOne(inversedBy: 'playlistsReproducidas')]
-    private ?Usuario $usuario = null;
+    #[ORM\ManyToOne(targetEntity: Usuario::class, inversedBy: 'playlistsReproducidas')]
+    #[ORM\JoinColumn(nullable:false, onDelete: 'CASCADE')]
+    private Usuario $usuario ;
 
-    #[ORM\ManyToOne(inversedBy: 'reproduccionesDeUsuario')]
-    private ?Playlist $playlist = null;
+    #[ORM\ManyToOne(targetEntity: Playlist::class, inversedBy: 'reproduccionesDeUsuario')]
+    #[ORM\JoinColumn(nullable:false, onDelete: 'CASCADE')]
+    private Playlist $playlist ;
 
     public function getId(): ?int
     {

@@ -57,7 +57,7 @@ final class PlaylistCancionController extends AbstractController
             $e->flush();
             
             return $this->json([
-                'message' => 'Relacion añadida correctamente',
+                'message' => 'Cancion añadida correctamente',
                 'path' => 'src/Controller/PlaylistCancionController'
             ]);
         } else {

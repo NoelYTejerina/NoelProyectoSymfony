@@ -28,7 +28,10 @@ class Usuario
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $fechaNacimiento = null;
 
-    #[ORM\OneToOne(inversedBy: 'usuario', cascade: ['persist', 'remove'])]
+
+    // Relaciones entre entidades
+
+    #[ORM\OneToOne(targetEntity: Perfil::class, mappedBy: 'usuario', cascade: ['persist', 'remove'])]
     private ?Perfil $perfil = null;
 
     /**
@@ -42,6 +45,8 @@ class Usuario
      */
     #[ORM\OneToMany(targetEntity: UsuarioPlaylist::class, mappedBy: 'usuario')]
     private Collection $playlistsReproducidas;
+
+    // constructor y metodos 
 
     public function __construct()
     {

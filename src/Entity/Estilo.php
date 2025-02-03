@@ -21,8 +21,7 @@ class Estilo
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descripcion = null;
 
-    #[ORM\ManyToOne(inversedBy: 'estiloMusicalPreferido')]
-    private ?Perfil $perfil = null;
+
 
     /**
      * @var Collection<int, Cancion>
@@ -30,9 +29,16 @@ class Estilo
     #[ORM\OneToMany(targetEntity: Cancion::class, mappedBy: 'genero')]
     private Collection $canciones;
 
+    /**
+     * @var Collection<int, PerfilEstilo>
+     */
+    #[ORM\OneToMany(targetEntity: PerfilEstilo::class, mappedBy: 'estilo')]
+    private Collection $perfilesSeguidores;
+
     public function __construct()
     {
         $this->canciones = new ArrayCollection();
+        $this->perfilesSeguidores = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,17 +77,6 @@ class Estilo
         return $this;
     }
 
-    public function getPerfil(): ?Perfil
-    {
-        return $this->perfil;
-    }
-
-    public function setPerfil(?Perfil $perfil): static
-    {
-        $this->perfil = $perfil;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Cancion>
@@ -91,25 +86,54 @@ class Estilo
         return $this->canciones;
     }
 
-    public function addCancione(Cancion $cancione): static
+    public function addCancion(Cancion $cancion): static
     {
-        if (!$this->canciones->contains($cancione)) {
-            $this->canciones->add($cancione);
-            $cancione->setGenero($this);
+        if (!$this->canciones->contains($cancion)) {
+            $this->canciones->add($cancion);
+            $cancion->setGenero($this);
         }
 
         return $this;
     }
 
-    public function removeCancione(Cancion $cancione): static
+    public function removeCancion(Cancion $cancion): static
     {
-        if ($this->canciones->removeElement($cancione)) {
+        if ($this->canciones->removeElement($cancion)) {
             // set the owning side to null (unless already changed)
-            if ($cancione->getGenero() === $this) {
-                $cancione->setGenero(null);
+            if ($cancion->getGenero() === $this) {
+                $cancion->setGenero(null);
             }
         }
 
+        return $this;
+    }
+
+
+
+    /**
+     * @return Collection<int, PerfilEstilo>
+     */
+    public function getPerfilesSeguidores(): Collection
+    {
+        return $this->perfilesSeguidores;
+    }
+
+    public function addPerfilesSeguidores(PerfilEstilo $perfilSeguidor): static
+    {
+        if (!$this->perfilesSeguidores->contains($perfilSeguidor)) {
+            $this->perfilesSeguidores->add($perfilSeguidor);
+            $perfilSeguidor->setEstilo($this);
+        }
+        return $this;
+    }
+
+    public function removePerfilesSeguidores(PerfilEstilo $perfilSeguidor): static
+    {
+        if ($this->perfilesSeguidores->removeElement($perfilSeguidor)) {
+            if ($perfilSeguidor->getEstilo() === $this) {
+                $perfilSeguidor->setEstilo(null);
+            }
+        }
         return $this;
     }
 }

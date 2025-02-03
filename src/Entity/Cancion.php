@@ -33,7 +33,8 @@ class Cancion
     #[ORM\Column(nullable: true)]
     private ?int $likes = null;
 
-    #[ORM\ManyToOne(inversedBy: 'canciones')]
+    #[ORM\ManyToOne(targetEntity: Estilo::class, inversedBy: 'canciones')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Estilo $genero = null;
 
     /**

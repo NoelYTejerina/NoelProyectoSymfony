@@ -27,8 +27,9 @@ class Playlist
     #[ORM\Column(nullable: true)]
     private ?int $likes = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Playlists')]
-    private ?Usuario $propietario = null;
+    #[ORM\ManyToOne(targetEntity:Usuario::class, inversedBy: 'Playlists')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    private Usuario $propietario ;
 
     /**
      * @var Collection<int, UsuarioPlaylist>

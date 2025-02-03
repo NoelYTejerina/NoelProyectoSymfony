@@ -28,10 +28,10 @@ final class UsuarioController extends AbstractController
   
         
         $usuario = new Usuario();
-        $usuario->setEmail('noelyazdani@hotmail.com');
-        $usuario->setPassword('Examen123');
-        $usuario->setNombre('Noel');
-        $usuario->setFechaNacimiento(new \DateTime('1989-04-22'));
+        $usuario->setEmail('pedroLozano@hotmail.com');
+        $usuario->setPassword('Examen456');
+        $usuario->setNombre('Pedro');
+        $usuario->setFechaNacimiento(new \DateTime('1992-11-12'));
         
         $nombreUsuario = $usuarioRepository->findOneByNombre($usuario->getNombre());
         if(!$nombreUsuario){
