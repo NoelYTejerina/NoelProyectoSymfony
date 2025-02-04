@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Repository\UsuarioRepository;
+
 use App\Entity\Usuario;
-use Doctrine\ORM\EntityManager;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,10 +28,10 @@ final class UsuarioController extends AbstractController
   
         
         $usuario = new Usuario();
-        $usuario->setEmail('pedroLozano@hotmail.com');
-        $usuario->setPassword('Examen456');
-        $usuario->setNombre('Pedro');
-        $usuario->setFechaNacimiento(new \DateTime('1992-11-12'));
+        $usuario->setEmail('alojandroCernada@hotmail.com');
+        $usuario->setPassword('Examen789');
+        $usuario->setNombre('Alejandro');
+        $usuario->setFechaNacimiento(new \DateTime('2007-01-12'));
         
         $nombreUsuario = $usuarioRepository->findOneByNombre($usuario->getNombre());
         if(!$nombreUsuario){

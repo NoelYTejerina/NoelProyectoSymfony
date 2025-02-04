@@ -21,8 +21,6 @@ class Estilo
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descripcion = null;
 
-
-
     /**
      * @var Collection<int, Cancion>
      */
@@ -77,7 +75,6 @@ class Estilo
         return $this;
     }
 
-
     /**
      * @return Collection<int, Cancion>
      */
@@ -99,7 +96,7 @@ class Estilo
     public function removeCancion(Cancion $cancion): static
     {
         if ($this->canciones->removeElement($cancion)) {
-            // set the owning side to null (unless already changed)
+            
             if ($cancion->getGenero() === $this) {
                 $cancion->setGenero(null);
             }
@@ -107,8 +104,6 @@ class Estilo
 
         return $this;
     }
-
-
 
     /**
      * @return Collection<int, PerfilEstilo>
@@ -135,5 +130,11 @@ class Estilo
             }
         }
         return $this;
+    }
+
+    
+    public function __toString(): string
+    {
+        return $this->nombre ?? 'Sin nombre';  
     }
 }

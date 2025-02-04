@@ -185,4 +185,9 @@ class Usuario
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->nombre ?? 'Sin nombre';  
+    }
 }

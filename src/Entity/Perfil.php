@@ -105,7 +105,7 @@ class Perfil
         return $this->estilosPreferidos;
     }
 
-    public function addEstilosPreferido(PerfilEstilo $estilosPreferido): static
+    public function addEstilosPreferidos(PerfilEstilo $estilosPreferido): static
     {
         if (!$this->estilosPreferidos->contains($estilosPreferido)) {
             $this->estilosPreferidos->add($estilosPreferido);
@@ -125,5 +125,9 @@ class Perfil
         }
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->nombre ?? 'Sin nombre';  
     }
 }

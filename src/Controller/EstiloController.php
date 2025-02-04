@@ -20,17 +20,19 @@ final class EstiloController extends AbstractController
         ]);
     }
 
-    #[Route('estilo/new_estilo', name: 'app_estilo_new')]
-    public function newEstilo(EntityManagerInterface $e): JsonResponse
+    #[Route('estilo/new_estilo/{nombreEstilo}/{descripcion}', name: 'app_estilo_new')]
+    public function newEstilo(EntityManagerInterface $e, string $nombreEstilo, string $descripcion): JsonResponse
     {
+        $descripcionDecodificada = urldecode($descripcion);
+        
         $estiloRepository = $e->getRepository(Estilo::class);
         
         $estilo = new Estilo();
-        $estilo->setNombre('Heavy Metal');
-        $estilo->setDescripcion('El heavy metal es un género de rock caracterizado por guitarras distorsionadas, ritmos rápidos, voces poderosas y temas de rebeldía o oscuridad');
+        $estilo->setNombre($nombreEstilo);
+        $estilo->setDescripcion($descripcionDecodificada);
         
-        $nombreEstilo = $estiloRepository->findOneByNombre($estilo->getNombre());
-        if(!$nombreEstilo){
+        $existeEstilo = $estiloRepository->findOneByNombre($estilo->getNombre());
+        if(!$existeEstilo){
             $e->persist($estilo);
             $e->flush();
             
