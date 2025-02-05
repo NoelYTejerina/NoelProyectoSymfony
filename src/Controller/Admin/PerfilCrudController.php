@@ -30,10 +30,10 @@ class PerfilCrudController extends AbstractCrudController
             ->setFormTypeOptions([
                 'by_reference' => false, 
             ]),
-            AssociationField::new('estilosPreferidos','PerfilEstilo')
+           /* AssociationField::new('estilosPreferidos','PerfilEstilo')
             ->setFormTypeOptions([
                 'by_reference' => false, 
-            ]),
+            ]),*/
         ];
     }
     

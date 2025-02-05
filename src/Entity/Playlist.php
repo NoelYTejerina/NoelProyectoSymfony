@@ -54,7 +54,7 @@ class Playlist
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function setId(int $id)
     {
         $this->id = $id;
 
@@ -66,7 +66,7 @@ class Playlist
         return $this->nombre;
     }
 
-    public function setNombre(?string $nombre): static
+    public function setNombre(?string $nombre)
     {
         $this->nombre = $nombre;
 
@@ -78,7 +78,7 @@ class Playlist
         return $this->visibilidad;
     }
 
-    public function setVisibilidad(?string $visibilidad): static
+    public function setVisibilidad(?string $visibilidad)
     {
         $this->visibilidad = $visibilidad;
 
@@ -90,7 +90,7 @@ class Playlist
         return $this->reproducciones;
     }
 
-    public function setReproducciones(?int $reproducciones): static
+    public function setReproducciones(?int $reproducciones)
     {
         $this->reproducciones = $reproducciones;
 
@@ -102,7 +102,7 @@ class Playlist
         return $this->likes;
     }
 
-    public function setLikes(?int $likes): static
+    public function setLikes(?int $likes)
     {
         $this->likes = $likes;
 
@@ -114,7 +114,7 @@ class Playlist
         return $this->propietario;
     }
 
-    public function setPropietario(?Usuario $propietario): static
+    public function setPropietario(?Usuario $propietario)
     {
         $this->propietario = $propietario;
 
@@ -129,7 +129,7 @@ class Playlist
         return $this->reproduccionesDeUsuario;
     }
 
-    public function addReproduccionesDeUsuario(UsuarioPlaylist $reproduccionesDeUsuario): static
+    public function addReproduccionesDeUsuario(UsuarioPlaylist $reproduccionesDeUsuario)
     {
         if (!$this->reproduccionesDeUsuario->contains($reproduccionesDeUsuario)) {
             $this->reproduccionesDeUsuario->add($reproduccionesDeUsuario);
@@ -139,7 +139,7 @@ class Playlist
         return $this;
     }
 
-    public function removeReproduccionesDeUsuario(UsuarioPlaylist $reproduccionesDeUsuario): static
+    public function removeReproduccionesDeUsuario(UsuarioPlaylist $reproduccionesDeUsuario)
     {
         if ($this->reproduccionesDeUsuario->removeElement($reproduccionesDeUsuario)) {
             // set the owning side to null (unless already changed)
@@ -159,7 +159,7 @@ class Playlist
         return $this->canciones;
     }
 
-    public function addCancione(PlaylistCancion $cancione): static
+    public function addCancione(PlaylistCancion $cancione)
     {
         if (!$this->canciones->contains($cancione)) {
             $this->canciones->add($cancione);
@@ -169,7 +169,7 @@ class Playlist
         return $this;
     }
 
-    public function removeCancione(PlaylistCancion $cancione): static
+    public function removeCancione(PlaylistCancion $cancione)
     {
         if ($this->canciones->removeElement($cancione)) {
             // set the owning side to null (unless already changed)

@@ -24,14 +24,7 @@ class EstiloCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('nombre'),
             TextareaField::new('descripcion'),
-            AssociationField::new('canciones','Cancion')
-            ->setFormTypeOptions([
-                'by_reference' => false, 
-            ]),
-            AssociationField::new('perfilesSeguidores','PerfilEstilo')
-            ->setFormTypeOptions([
-                'by_reference' => false, 
-            ]),
+          
         ];
     }
     

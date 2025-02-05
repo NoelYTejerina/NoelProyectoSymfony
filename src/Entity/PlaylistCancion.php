@@ -27,7 +27,7 @@ class PlaylistCancion
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function setId(int $id)
     {
         $this->id = $id;
 
@@ -39,7 +39,7 @@ class PlaylistCancion
         return $this->playlist;
     }
 
-    public function setPlaylist(?Playlist $playlist): static
+    public function setPlaylist(?Playlist $playlist)
     {
         $this->playlist = $playlist;
 
@@ -51,7 +51,7 @@ class PlaylistCancion
         return $this->cancion;
     }
 
-    public function setCancion(?Cancion $cancion): static
+    public function setCancion(?Cancion $cancion)
     {
         $this->cancion = $cancion;
 

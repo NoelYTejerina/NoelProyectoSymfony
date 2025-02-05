@@ -1,0 +1,9 @@
+easy_admin:
+    entities:
+        PlaylistCancion:
+            class: App\Entity\PlaylistCancion
+            label: 'Ver Playlist'
+            list:
+                title: 'Registro de canciones en Playlist'
+            form:
+                title: 'Añadir canción a Playlist'

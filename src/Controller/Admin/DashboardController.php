@@ -14,6 +14,8 @@ use App\Entity\Usuario;
 use App\Entity\Playlist;
 use App\Entity\Estilo;
 use App\Entity\Perfil;
+use App\Entity\PlaylistCancion;
+use App\Entity\UsuarioPlaylist;
 
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
@@ -58,9 +60,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Canciones', 'fa fa-music', Cancion::class);
         yield MenuItem::linkToCrud('Usuarios', 'fa fa-music', Usuario::class);
-        yield MenuItem::linkToCrud('Playlists', 'fa fa-music', Playlist::class);
+        yield MenuItem::linkToCrud('Crear una Playlists vacia', 'fa fa-music', Playlist::class);
         yield MenuItem::linkToCrud('Perfiles', 'fa fa-music', Perfil::class);
         yield MenuItem::linkToCrud('Estilos', 'fa fa-music', Estilo::class);
-        
+        yield MenuItem::linkToCrud('Reproducir una playlist', 'fa fa-music', UsuarioPlaylist::class);
+        yield MenuItem::linkToCrud('Añadir canciones a una Playlist', 'fa fa-music', PlaylistCancion::class);
+
+
     }
 }

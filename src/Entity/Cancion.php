@@ -53,7 +53,7 @@ class Cancion
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function setId(int $id)
     {
         $this->id = $id;
 
@@ -65,7 +65,7 @@ class Cancion
         return $this->titulo;
     }
 
-    public function setTitulo(?string $titulo): static
+    public function setTitulo(?string $titulo)
     {
         $this->titulo = $titulo;
 
@@ -77,7 +77,7 @@ class Cancion
         return $this->duracion;
     }
 
-    public function setDuracion(?int $duracion): static
+    public function setDuracion(?int $duracion)
     {
         $this->duracion = $duracion;
 
@@ -89,7 +89,7 @@ class Cancion
         return $this->album;
     }
 
-    public function setAlbum(?string $album): static
+    public function setAlbum(?string $album)
     {
         $this->album = $album;
 
@@ -101,7 +101,7 @@ class Cancion
         return $this->autor;
     }
 
-    public function setAutor(?string $autor): static
+    public function setAutor(?string $autor)
     {
         $this->autor = $autor;
 
@@ -113,7 +113,7 @@ class Cancion
         return $this->reproducciones;
     }
 
-    public function setReproducciones(?int $reproducciones): static
+    public function setReproducciones(?int $reproducciones)
     {
         $this->reproducciones = $reproducciones;
 
@@ -125,7 +125,7 @@ class Cancion
         return $this->likes;
     }
 
-    public function setLikes(?int $likes): static
+    public function setLikes(?int $likes)
     {
         $this->likes = $likes;
 
@@ -137,7 +137,7 @@ class Cancion
         return $this->genero;
     }
 
-    public function setGenero(?Estilo $genero): static
+    public function setGenero(?Estilo $genero)
     {
         $this->genero = $genero;
 
@@ -152,7 +152,7 @@ class Cancion
         return $this->playlists;
     }
 
-    public function addPlaylist(PlaylistCancion $playlist): static
+    public function addPlaylist(PlaylistCancion $playlist)
     {
         if (!$this->playlists->contains($playlist)) {
             $this->playlists->add($playlist);
@@ -162,7 +162,7 @@ class Cancion
         return $this;
     }
 
-    public function removePlaylist(PlaylistCancion $playlist): static
+    public function removePlaylist(PlaylistCancion $playlist)
     {
         if ($this->playlists->removeElement($playlist)) {
             // set the owning side to null (unless already changed)
@@ -175,6 +175,6 @@ class Cancion
     }
     public function __toString(): string
     {
-        return $this->nombre ?? 'Sin nombre';  
+        return $this->titulo ?? 'Sin nombre';  
     }
 }
