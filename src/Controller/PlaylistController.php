@@ -12,14 +12,32 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class PlaylistController extends AbstractController
-{
-    #[Route('/playlist', name: 'app_playlist')]
-    public function index(): Response
+
+{  #[Route('/playlists', name: 'app_playlists')]
+    public function listarPlaylists(EntityManagerInterface $e): Response
     {
+        $playlists = $e->getRepository(Playlist::class)->findAll();
+
         return $this->render('playlist/index.html.twig', [
-            'controller_name' => 'PlaylistController',
+            'playlists' => $playlists,
         ]);
     }
+
+    #[Route('/playlist/{id}', name: 'app_playlist_detalle')]
+    public function verPlaylistPorId(EntityManagerInterface $e, int $id): Response
+    {
+        $playlist = $e->getRepository(Playlist::class)->find($id);
+
+        if (!$playlist) {
+            throw $this->createNotFoundException('La playlist no existe.');
+        }
+
+        return $this->render('playlist/detalle.html.twig', [
+            'playlist' => $playlist,
+        ]);
+    }
+
+    
 
     #[Route('playlist/new_playlist', name: 'app_playlist_new')]
     public function newPlaylist(EntityManagerInterface $e): JsonResponse

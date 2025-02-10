@@ -1,0 +1,26 @@
+
+
+.cancion-detalle {
+    color: white;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7); /* Filtro oscuro para mejorar contraste */
+    padding: 20px;
+}
+
+.cancion-detalle p {
+    margin: 10px 0;
+    color: white;
+}
+
+.cancion-detalle audio {
+    width: 100%;
+    margin-top: 20px;
+}

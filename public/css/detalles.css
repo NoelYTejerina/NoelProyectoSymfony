@@ -1,0 +1,169 @@
+/* Header */
+/* Estilo para el header */
+a{
+    color: #ffffff;
+}
+
+header {
+    background-color: black;
+    border: 2px solid green; /* Borde verde */
+    border-radius: 8px; /* Radio de 8px */
+    box-shadow: 0 4px 6px rgba(0, 255, 0, 0.5); /* Efecto de sombreado verde */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titulo dentro del header */
+header h1 {
+    color: #1DB954; /* Color verde Spotify */
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Estilo para la barra de navegación */
+nav {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 2px solid black; /* Borde negro */
+    border-bottom: 2px solid black; /* Borde negro */
+}
+
+/* Elementos de navegación */
+nav ul {
+    display: flex;
+    gap: 20px; /* Separación entre los elementos */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de los enlaces dentro de la navegación */
+nav ul li a {
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Efecto de hover en los enlaces de la navegación */
+nav ul li a:hover {
+    color: white; /* Letra blanca cuando pasa el cursor */
+    text-decoration: underline;
+}
+
+/* Main Content */
+.container {
+    display: flex;
+    margin-top: 20px;
+}
+
+aside {
+    width: 10%;
+    background-color: #000000;
+    padding: 10px;
+    margin-right: 20px;
+    border: #1DB954 solid 0.5px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin: 10px 0;
+}
+
+aside ul li a {
+    color: #1DB954;
+    text-decoration: none;
+}
+
+/* Estilo de la lista de playlists */
+.playlists ul {
+    display: flex; /* Distribuir elementos horizontalmente */
+    flex-wrap: wrap; /* Permitir que se ajusten si no hay espacio */
+    justify-content: space-around; /* Espaciado uniforme */
+    padding: 0;
+    list-style: none; /* Eliminar viñetas */
+    width: 100%; /* Ocupar todo el ancho */
+}
+
+.playlists ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el icono y el texto */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Icono de círculo antes de cada playlist */
+.playlists ul li::before {
+    content: "•"; /* Punto */
+    font-size: 22px; /* Tamaño del punto */
+    color: #1DB954; /* Verde Spotify */
+}
+
+/* Estilos de los enlaces de las playlists */
+.playlists ul li a {
+    text-decoration: none;
+    color: white; /* Puedes cambiarlo si prefieres otro color */
+    transition: color 0.3s;
+}
+
+.playlists ul li a:hover {
+    color: #1DB954; /* Verde Spotify al pasar el cursor */
+}
+
+/* Contenedor de canciones */
+.canciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px; /* Espacio entre canciones */
+    justify-items: center; /* Centrar los elementos */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Estilo de cada canción */
+.cancion {
+    width: 100%;
+    max-width: 300px; /* Tamaño máximo */
+    background-color: black;
+    border: 2px solid #1DB954; /* Bordes verdes */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo del contenedor de info de la canción */
+.cancion-info {
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+}
+
+/* Títulos de las canciones */
+.cancion-info h3 a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cancion-info h3 a:hover {
+    color: #1DB954; /* Verde al pasar el cursor */
+}
+
+/* Estilo del reproductor de audio */
+.cancion-info audio {
+    width: 100%;
+    margin-top: 10px;
+}
+

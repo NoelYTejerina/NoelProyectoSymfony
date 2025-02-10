@@ -28,7 +28,7 @@ class PlaylistCrudController extends AbstractCrudController
             IntegerField::new('likes'),            
             AssociationField::new('propietario','Usuario')
             ->setFormTypeOptions([
-                'by_reference' => false, 
+                'by_reference' => true, 
             ]),
             /*AssociationField::new('reproduccionesDeUsuario', 'UsuarioPlaylist') 
             ->setFormTypeOptions([

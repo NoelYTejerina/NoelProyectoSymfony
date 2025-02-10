@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ playlist.nombre }}{% endblock %}
+
+{% block body %}
+    <h1>{{ playlist.nombre }}</h1>
+    <h2>Canciones:</h2>
+    <ul>
+        {% for playlistCancion in playlist.canciones %}
+            <li><a href="{{ path('app_cancion_detalle', { id: playlistCancion.cancion.id }) }}">{{ playlistCancion.cancion.titulo }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

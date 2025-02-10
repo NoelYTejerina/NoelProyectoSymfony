@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ cancion.titulo }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/detallesCancion.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="cancion-detalle" style="background-image: url('{{ asset('img/' ~ cancion.albumImagen) }}');">
+        <h1>{{ cancion.titulo }}</h1>
+        <p>Autor: {{ cancion.autor }}</p>
+        <p>Álbum: {{ cancion.album }}</p>
+        <p>Año de lanzamiento: {{ cancion.fecha }}</p>
+        <p>Duración: {{ cancion.duracion }} segundos</p>
+        <p>Likes: {{ cancion.likes }}</p>
+        <p>Reproducciones: {{ cancion.reproducciones }}</p>
+
+        <audio controls>
+            <source src="{{ absolute_url(asset(cancion.archivo)) }}" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+        </audio>
+    </div>
+{% endblock %}

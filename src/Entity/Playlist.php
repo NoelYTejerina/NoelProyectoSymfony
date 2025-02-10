@@ -27,9 +27,9 @@ class Playlist
     #[ORM\Column(nullable: true)]
     private ?int $likes = null;
 
-    #[ORM\ManyToOne(targetEntity:Usuario::class, inversedBy: 'Playlists')]
+    #[ORM\ManyToOne(targetEntity: Usuario::class, inversedBy: 'Playlists')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private Usuario $propietario ;
+    private Usuario $propietario;
 
     /**
      * @var Collection<int, UsuarioPlaylist>
@@ -151,6 +151,7 @@ class Playlist
         return $this;
     }
 
+
     /**
      * @return Collection<int, PlaylistCancion>
      */
@@ -159,29 +160,29 @@ class Playlist
         return $this->canciones;
     }
 
-    public function addCancione(PlaylistCancion $cancione)
+    public function addCancion(PlaylistCancion $playlistCancion): static
     {
-        if (!$this->canciones->contains($cancione)) {
-            $this->canciones->add($cancione);
-            $cancione->setPlaylist($this);
+        if (!$this->canciones->contains($playlistCancion)) {
+            $this->canciones->add($playlistCancion);
+            $playlistCancion->setPlaylist($this);
         }
 
         return $this;
     }
 
-    public function removeCancione(PlaylistCancion $cancione)
+    public function removeCancion(PlaylistCancion $playlistCancion): static
     {
-        if ($this->canciones->removeElement($cancione)) {
-            // set the owning side to null (unless already changed)
-            if ($cancione->getPlaylist() === $this) {
-                $cancione->setPlaylist(null);
+        if ($this->canciones->removeElement($playlistCancion)) {
+            if ($playlistCancion->getPlaylist() === $this) {
+                $playlistCancion->setPlaylist(null);
             }
         }
 
         return $this;
     }
+
     public function __toString(): string
     {
-        return $this->nombre ?? 'Sin nombre';  
+        return $this->nombre ?? 'Sin nombre';
     }
 }

@@ -28,7 +28,7 @@ class PerfilCrudController extends AbstractCrudController
             TextareaField::new('descripcion'),
             AssociationField::new('usuario','Usuario')
             ->setFormTypeOptions([
-                'by_reference' => false, 
+                'by_reference' => true, 
             ]),
            /* AssociationField::new('estilosPreferidos','PerfilEstilo')
             ->setFormTypeOptions([

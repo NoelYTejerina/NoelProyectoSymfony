@@ -15,11 +15,27 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class CancionController extends AbstractController
 {
-    #[Route('/cancion', name: 'app_cancion')]
-    public function index(): Response
+    #[Route('/canciones', name: 'app_canciones')]
+    public function listarCanciones(EntityManagerInterface $em): Response
     {
+        $canciones = $em->getRepository(Cancion::class)->findAll();
+
         return $this->render('cancion/index.html.twig', [
-            'controller_name' => 'CancionController',
+            'canciones' => $canciones,
+        ]);
+    }
+
+    #[Route('/cancion/{id}', name: 'app_cancion_detalle')]
+    public function verCancion(EntityManagerInterface $e, int $id): Response
+    {
+        $cancion = $e->getRepository(Cancion::class)->find($id);
+
+        if (!$cancion) {
+            throw $this->createNotFoundException('La canción no existe.');
+        }
+
+        return $this->render('cancion/detalle.html.twig', [
+            'cancion' => $cancion,
         ]);
     }
 
@@ -42,6 +58,8 @@ final class CancionController extends AbstractController
         $cancion->setDuracion(255);
         $cancion->setAlbum('Holy Diver');
         $cancion->setAutor('Dio');
+        $cancion->setFecha(1980);
+        $cancion->setAlbumImagen('img/depecheV.jpg');
         $cancion->setGenero($estilo);
         
         $tituloCancion = $cancionRepository->findOneByTitulo($cancion->getTitulo());

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/detalles.css') }}">
+{% endblock %}
+
+{% block body %}
+    <!-- Header -->
+    <header>
+        <h1>MySpotify</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Playlist</a></li>
+                <li><a href="#">Canciones</a></li>
+                <li><a href="#">Explorar</a></li>
+            </ul>
+        </nav>
+           <form action="" method="GET">
+                    <input type="text" name="q" placeholder="Buscar canción">
+                    <button type="submit">Buscar</button>
+                </form>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Sidebar -->
+            <aside>
+                <ul>
+                    <li><a href="#">Playlist</a></li>
+                    <li><a href="#">Canciones</a></li>
+                    <li><a href="#">Explorar</a></li>
+                </ul>
+             
+            </aside>
+
+            <!-- Main content for playlists -->
+            <div class="main-content">
+                <h2>Últimas Playlist añadidas</h2>
+                <div class="playlists">
+                    <ul>
+                        {% for playlist in ultimasPlaylists %}
+                            <li>
+                                <a href="{{ path('app_playlist_detalle', { id: playlist.id }) }}">
+                                    {{ playlist.nombre }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Main content for songs -->
+                <h2>Últimas canciones añadidas</h2>
+                <div class="canciones">
+                    {% for cancion in ultimasCanciones %}
+                        <div class="cancion">
+                            <div class="cancion-info" style="background-image: url('{{ asset('img/' ~ cancion.albumImagen) }}');">
+                                <h3>
+                                    <a href="{{ path('app_cancion_detalle', { id: cancion.id }) }}">
+                                        {{ cancion.titulo }}
+                                    </a>
+                                </h3>
+                                <p>{{ cancion.autor }}</p>
+                                <audio controls>
+                                    <source src="{{ absolute_url(asset(cancion.archivo)) }}" type="audio/mpeg">
+                                    Tu navegador no soporta audio HTML5.
+                                </audio>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

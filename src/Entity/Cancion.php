@@ -33,6 +33,9 @@ class Cancion
     #[ORM\Column(nullable: true)]
     private ?int $likes = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $archivo = null;
+
     #[ORM\ManyToOne(targetEntity: Estilo::class, inversedBy: 'canciones')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Estilo $genero = null;
@@ -42,6 +45,13 @@ class Cancion
      */
     #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'cancion')]
     private Collection $playlists;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $fecha = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $albumImagen = null;
+
 
     public function __construct()
     {
@@ -176,5 +186,45 @@ class Cancion
     public function __toString(): string
     {
         return $this->titulo ?? 'Sin nombre';  
+    }
+
+    public function getArchivo(): ?string
+    {
+        return $this->archivo;
+    }
+
+    public function setArchivo(string $archivo)
+    {
+        if (!str_starts_with($archivo, 'songs/')) {
+            $archivo = 'songs/' . $archivo;
+        }
+        
+        $this->archivo = $archivo;
+
+        return $this;
+    }
+
+    public function getFecha(): ?int
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha(?int $fecha): static
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    public function getAlbumImagen(): ?string
+    {
+        return $this->albumImagen;
+    }
+
+    public function setAlbumImagen(?string $albumImagen): self
+    {
+        $this->albumImagen = $albumImagen;
+
+        return $this;
     }
 }
