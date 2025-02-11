@@ -11,7 +11,27 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+
+      <header>
+         <h1><a href="{{ path('app_home') }}">MySpotify</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{{path('app_playlists')}}">Playlist</a></li>
+                <li><a href="#">Canciones</a></li>
+                <li><a href="#">Explorar</a></li>
+            </ul>
+        </nav>
+           <form action="" method="GET">
+                    <input type="text" name="q" placeholder="Buscar canción">
+                    <button type="submit">Buscar</button>
+                </form>
+    </header>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        {% endblock %}
     </body>
+    <footer>
+        <p>&copy; 2025 Mi Música, Todos los derechos reservados.</p>
+    </footer>
+    
 </html>

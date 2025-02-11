@@ -2,3 +2,96 @@ body {
     background-color: rgb(43, 43, 43) ;
    
 }
+
+a {
+    color: #ffffff;
+}
+
+a:hover{
+    color: #1DB954;
+}
+
+header{
+    top: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    background-color:#000000 ;  
+    text-align: center;    
+    border-radius: 8px; /* Radio de 8px */ 
+    border: solid 1px rgb(28, 49, 35);
+    box-shadow: 0 0 100px 50px rgba(1, 75, 7, 0.9);     
+}
+
+/* Titulo dentro del header */
+header h1 {
+    color: #1DB954; /* Color verde Spotify */
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Estilo para la barra de navegación */
+nav {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 2px solid black; /* Borde negro */
+    border-bottom: 2px solid black; /* Borde negro */
+}
+
+/* Elementos de navegación */
+nav ul {
+    display: flex;
+    gap: 20px; /* Separación entre los elementos */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de los enlaces dentro de la navegación */
+nav ul li a {
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Efecto de hover en los enlaces de la navegación */
+nav ul li a:hover {
+    color: white; /* Letra blanca cuando pasa el cursor */
+    text-decoration: underline;
+}
+
+footer {
+    bottom:0 ;
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+ /* Estilos para el reproductor de música en la parte inferior */
+ .player-bar {
+    position: fixed;
+    margin-top: 10px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.player-bar audio {
+    width: 85%;
+}
+
+.player-bar .song-info {
+    margin-right: 10px;
+}

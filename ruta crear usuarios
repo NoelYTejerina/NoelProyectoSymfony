@@ -1,0 +1,17 @@
+en actividad 4 , instalar el composer
+make:usuario
+llamarlo user
+
+ver config/packages/security.yaml
+
+
+editar entidad usuario y añadir campos nuevos
+
+
+Crear formualrio por consola
+make:form
+Usuario
+RegistrationFormType
+Usuario
+
+crear controller del registro

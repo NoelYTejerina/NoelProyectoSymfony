@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ playlist.nombre }}{% endblock %}
+{% block title %}Playlists{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/detalles.css') }}">
+{% endblock %}
 
 {% block body %}
     <h1>{{ playlist.nombre }}</h1>

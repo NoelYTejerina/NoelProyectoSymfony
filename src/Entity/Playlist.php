@@ -160,7 +160,7 @@ class Playlist
         return $this->canciones;
     }
 
-    public function addCancion(PlaylistCancion $playlistCancion): static
+    public function addCancion(PlaylistCancion $playlistCancion) 
     {
         if (!$this->canciones->contains($playlistCancion)) {
             $this->canciones->add($playlistCancion);
@@ -170,7 +170,7 @@ class Playlist
         return $this;
     }
 
-    public function removeCancion(PlaylistCancion $playlistCancion): static
+    public function removeCancion(PlaylistCancion $playlistCancion)
     {
         if ($this->canciones->removeElement($playlistCancion)) {
             if ($playlistCancion->getPlaylist() === $this) {
