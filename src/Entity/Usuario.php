@@ -59,7 +59,7 @@ class Usuario
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function setId(int $id)
     {
         $this->id = $id;
 

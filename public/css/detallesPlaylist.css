@@ -1,0 +1,77 @@
+body{
+    text-align: center;
+}
+
+.main-content {
+    height: 100%;
+    width: 100%;
+    display: flex;    
+    justify-content: center; /* Centra los recuadros de las playlists */
+    background-color: black; /* Fondo negro para todo el contenedor */
+    margin: 10px;
+
+}
+
+.playlists{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columnas */
+    gap: 20px;
+    /* Espacio entre canciones */
+    justify-items: center;
+    /* Centrar los elementos */
+    width: 100%;
+    margin-top: 20px;  
+  
+    /* Tamaño máximo */
+    background-color: black;
+    border: 2px solid #1DB954;
+    /* Bordes verdes */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+   
+}
+
+
+
+.playlist-detalle {
+    color: white;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7); /* Filtro oscuro para mejorar contraste */
+    margin: 10px;
+}
+
+
+
+.playlist-info:hover {
+    cursor:grabbing;
+    transform: scale(1.05); 
+    transition: transform 0.8s ease-in-out; 
+    
+}
+
+/* Estilo de cada canción */
+.cancion {
+    width: 100%;
+    max-width: 300px;
+    /* Tamaño máximo */
+    background-color: black;
+    border: 2px solid #1DB954;
+    /* Bordes verdes */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+

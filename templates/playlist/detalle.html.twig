@@ -5,9 +5,20 @@
 {% block body %}
     <h1>{{ playlist.nombre }}</h1>
     <h2>Canciones:</h2>
-    <ul>
+    <div class="canciones-lista">
         {% for playlistCancion in playlist.canciones %}
-            <li><a href="{{ path('app_cancion_detalle', { id: playlistCancion.cancion.id }) }}">{{ playlistCancion.cancion.titulo }}</a></li>
+            <div class="cancion-info" style="background-image: url('{{ asset('img/' ~ playlistCancion.cancion.albumImagen) }}');">
+                <h3>
+                    <a href="{{ path('app_cancion_detalle', { id: playlistCancion.cancion.id }) }}">
+                        {{ playlistCancion.cancion.titulo }}
+                    </a>
+                </h3>
+                <p>{{ playlistCancion.cancion.autor }}</p>
+                <audio controls>
+                    <source src="{{ absolute_url(asset(playlistCancion.cancion.archivo)) }}" type="audio/mpeg">
+                    Tu navegador no soporta audio HTML5.
+                </audio>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

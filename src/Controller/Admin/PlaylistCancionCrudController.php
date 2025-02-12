@@ -25,10 +25,10 @@ class PlaylistCancionCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),            
 
             AssociationField::new('cancion', 'Cancion')
-                ->setFormTypeOptions(['by_reference' => false]),
+                ->setFormTypeOptions(['by_reference' => true]),
 
             AssociationField::new('playlist', 'Playlist')
-                ->setFormTypeOptions(['by_reference' => false])
+                ->setFormTypeOptions(['by_reference' => true])->hideOnForm()
 
         ];
     }

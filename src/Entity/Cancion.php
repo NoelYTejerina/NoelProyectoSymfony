@@ -209,7 +209,7 @@ class Cancion
         return $this->fecha;
     }
 
-    public function setFecha(?int $fecha): static
+    public function setFecha(?int $fecha)
     {
         $this->fecha = $fecha;
 

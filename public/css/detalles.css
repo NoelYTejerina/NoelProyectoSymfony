@@ -147,11 +147,6 @@ aside ul li a {
 }
 
 
-/*Estilos para la vista de la pagina que ve en detalle cada playlist*/
-.contenedor-vista-playlist{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #1DB954;
-}
+
+
+

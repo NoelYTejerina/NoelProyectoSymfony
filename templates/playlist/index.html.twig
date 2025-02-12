@@ -4,16 +4,29 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/detalles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/detallesPlaylist.css') }}">
+  
 {% endblock %}
 
 {% block body %}
-    <h1>{{ playlist.nombre }}</h1>
-    <h2>Canciones:</h2>
-    <ul>
-        {% for cancion in playlist.canciones %}
-            <li><a href="{{ path('app_cancion_detalle', { id: cancion.id }) }}">{{ cancion.titulo }}</a></li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+    <h1>Playlists</h1>
 
+    {% if playlists is not empty %}
+        <!-- Main content for playlists -->
+        <div class="main-content">
+            <div class="playlists">
+                {% for playlist in playlists %}
+                    <div class="playlist-detalle">
+                        <h3>
+                            <a href="{{ path('app_playlist_detalle', { id: playlist.id }) }}">
+                                {{ playlist.nombre }}
+                            </a>
+                        </h3>  
+                    </div>                          
+                {% endfor %}
+            </div>
+        </div>   
+    {% else %}
+        <p>No hay playlists disponibles.</p>
+    {% endif %}
+{% endblock %}

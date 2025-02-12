@@ -28,7 +28,7 @@ class Playlist
     private ?int $likes = null;
 
     #[ORM\ManyToOne(targetEntity: Usuario::class, inversedBy: 'Playlists')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
     private Usuario $propietario;
 
     /**
@@ -40,7 +40,7 @@ class Playlist
     /**
      * @var Collection<int, PlaylistCancion>
      */
-    #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'playlist')]
+    #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'playlist', cascade:['persist','remove'])]
     private Collection $canciones;
 
     public function __construct()

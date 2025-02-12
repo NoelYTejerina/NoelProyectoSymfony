@@ -17,7 +17,7 @@
             <!-- Sidebar -->
             <aside>
                 <ul>
-                    <li><a href="#">Playlist</a></li>
+                    <li><a href="{{path('app_playlists')}}">Playlist</a></li>
                     <li><a href="#">Canciones</a></li>
                     <li><a href="#">Explorar</a></li>
                 </ul>
@@ -26,8 +26,8 @@
 
             <!-- Main content for playlists -->
             <div class="main-content">
-                <h2>Últimas Playlist añadidas</h2>
                 <div class="playlists">
+                <h2>Últimas Playlist añadidas</h2>
                     <ul>
                         {% for playlist in ultimasPlaylists %}
                             <li>
